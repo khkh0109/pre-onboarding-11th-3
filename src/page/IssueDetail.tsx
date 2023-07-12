@@ -1,5 +1,13 @@
+import DetailHeader from "../components/IssueDetail/DetailHeader";
+import DetailBody from "../components/IssueDetail/DetailBody";
+
 function IssueDetail() {
-  return <div>IssueDetail</div>;
+  return (
+    <>
+      <DetailHeader />
+      <DetailBody />
+    </>
+  );
 }
 
 export default IssueDetail;
