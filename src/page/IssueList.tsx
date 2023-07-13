@@ -1,13 +1,27 @@
-import Issue from "../components/IssueList/Issue";
-import Advertising from "../components/IssueList/Advertising";
+import { useState, useEffect } from "react";
+import { Endpoints } from "@octokit/types";
+import { RepositoryAPI } from "../api/api";
+import IssueListWithAd from "../components/IssueList/IssueListWithAd";
+
+type issueListResponseType =
+  Endpoints["GET /repos/{owner}/{repo}/issues"]["response"];
+
+type dataListType = issueListResponseType["data"];
 
 function IssueList() {
+  const [issueList, setIssueList] = useState<dataListType>();
+
+  useEffect(() => {
+    RepositoryAPI.getIssueList()
+      .then(res => {
+        setIssueList(res);
+      })
+      .catch(err => console.error(err));
+  }, []);
+
   return (
     <ul>
-      {[1, 2, 3, 4, 5].map(item => {
-        return <Issue key={item} />;
-      })}
-      <Advertising />
+      <IssueListWithAd issueList={issueList} />
     </ul>
   );
 }
