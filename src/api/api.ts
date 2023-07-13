@@ -28,13 +28,7 @@ export class RepositoryAPI {
     const result: AxiosResponse<issueListResponseType["data"]> =
       await axiosInstance.get(URI);
 
-    // REMOVE: issue만 필터링
-    const issue = result.data.filter(item => {
-      return item.pull_request === undefined;
-    });
-
     return result.data;
-    // return issue;
   }
 
   static async getIssue(issueId: string): Promise<issueResponseType["data"]> {
