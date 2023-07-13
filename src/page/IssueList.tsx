@@ -6,10 +6,10 @@ import IssueListWithAd from "../components/IssueList/IssueListWithAd";
 type issueListResponseType =
   Endpoints["GET /repos/{owner}/{repo}/issues"]["response"];
 
-type dataListType = issueListResponseType["data"];
+type issueListType = issueListResponseType["data"];
 
 function IssueList() {
-  const [issueList, setIssueList] = useState<dataListType>();
+  const [issueList, setIssueList] = useState<issueListType>();
 
   useEffect(() => {
     RepositoryAPI.getIssueList()
