@@ -1,25 +1,35 @@
 import styled from "styled-components";
 
-function DetailHeader() {
+interface DetailHeaderProps {
+  title?: string;
+  issueNumber?: number;
+  name?: string;
+  createdAt?: string;
+  comments?: number;
+  avatar?: string;
+}
+
+const defaultAvatar =
+  "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png";
+
+function DetailHeader(props: DetailHeaderProps) {
+  const { title, issueNumber, name, createdAt, comments, avatar } = props;
   return (
     <Container>
       <UserImage>
-        <img
-          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
-          alt="user profile image"
-        />
+        <img src={avatar ? avatar : defaultAvatar} alt="user profile image" />
       </UserImage>
       <div>
         <Title>
-          <span>#issue number</span>
-          <span>title</span>
+          <span>#{issueNumber}</span>
+          <span>{title}</span>
         </Title>
         <Info>
-          <span>작성자: name</span>
-          <span>작성일: 23.2.2</span>
+          <span>작성자: {name}</span>
+          <span>작성일: {createdAt}</span>
         </Info>
       </div>
-      <div>코멘트: 67</div>
+      <div>코멘트: {comments}</div>
     </Container>
   );
 }
