@@ -1,12 +1,5 @@
-/**
- * 이슈 번호 number
- * 타이틀 title
- * 작성자 user.login
- * 작성일 created_at
- * 코멘트 comments
- */
-
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 interface IssueProps {
   issueNumber: number;
@@ -18,9 +11,14 @@ interface IssueProps {
 
 function Issue(props: IssueProps) {
   const { issueNumber, title, name, createdAt, comments } = props;
+  const navigate = useNavigate();
+
+  const handleClickIssue = () => {
+    navigate(`/issue/${issueNumber}`);
+  };
 
   return (
-    <Container>
+    <Container onClick={handleClickIssue}>
       <div>
         <Title>
           <strong>#{issueNumber}</strong>
