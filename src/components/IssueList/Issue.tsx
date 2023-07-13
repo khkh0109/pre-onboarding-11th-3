@@ -8,20 +8,30 @@
 
 import styled from "styled-components";
 
-function Issue() {
+interface IssueProps {
+  issueNumber: number;
+  title: string;
+  name?: string;
+  createdAt: string | null;
+  comments: number;
+}
+
+function Issue(props: IssueProps) {
+  const { issueNumber, title, name, createdAt, comments } = props;
+
   return (
     <Container>
       <div>
         <Title>
-          <strong>#issue number</strong>
-          <strong>title</strong>
+          <strong>#{issueNumber}</strong>
+          <strong>{title}</strong>
         </Title>
         <Info>
-          <span>작성자: name</span>
-          <span>작성일: 23.2.2</span>
+          <span>작성자: {name}</span>
+          <span>작성일: {createdAt}</span>
         </Info>
       </div>
-      <div>코멘트: 67</div>
+      <div>코멘트: {comments}</div>
     </Container>
   );
 }
