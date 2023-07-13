@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import IssueList from "./page/IssueList";
 import IssueDetail from "./page/IssueDetail";
+import NotFound from "./page/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -11,7 +12,10 @@ const router = createBrowserRouter([
     path: "/issue/:id",
     element: <IssueDetail />,
   },
-  // Add Error Page Component
+  {
+    path: "/*",
+    element: <NotFound />,
+  },
 ]);
 
 export default router;
