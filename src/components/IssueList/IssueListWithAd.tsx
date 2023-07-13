@@ -5,10 +5,10 @@ import Advertising from "./Advertising";
 type issueListResponseType =
   Endpoints["GET /repos/{owner}/{repo}/issues"]["response"];
 
-type dataListType = issueListResponseType["data"];
+type issueListType = issueListResponseType["data"];
 
 interface IssueListWithAdPProps {
-  issueList?: dataListType;
+  issueList?: issueListType;
 }
 
 function IssueListWithAd({ issueList }: IssueListWithAdPProps) {
