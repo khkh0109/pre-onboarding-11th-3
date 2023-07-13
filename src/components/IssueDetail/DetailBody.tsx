@@ -1,16 +1,14 @@
 import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
 
-const markdown = `
-# Title
-## Sub title
-**strong**
-`;
+interface DetailBodyProps {
+  body: string | null | undefined;
+}
 
-function DetailBody() {
+function DetailBody({ body }: DetailBodyProps) {
   return (
     <Container>
-      <ReactMarkdown>{markdown}</ReactMarkdown>
+      <ReactMarkdown children={body ? body : ""}></ReactMarkdown>
     </Container>
   );
 }
